@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backpack – click items to pack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Click items to put them in the backpack</h1>
+  <div class="scene">
+    <div class="backpack">
+      <div class="pocket" id="pocket"></div>
+    </div>
+    <div class="items-out" id="itemsOut">
+      <span class="item" data-emoji="📕">📕</span>
+      <span class="item" data-emoji="✏️">✏️</span>
+      <span class="item" data-emoji="🍎">🍎</span>
+      <span class="item" data-emoji="📐">📐</span>
+      <span class="item" data-emoji="🖍️">🖍️</span>
+    </div>
+  </div>
+
+  <script>
+    var pocket = document.getElementById('pocket');
+    var itemsOut = document.getElementById('itemsOut');
+
+    itemsOut.addEventListener('click', function(e) {
+      var el = e.target;
+      if (!el.classList.contains('item') || el.classList.contains('in-bag')) return;
+      el.classList.add('in-bag');
+      pocket.appendChild(el);
+    });
+  </script>
+</body>
+</html>
