@@ -1,0 +1,141 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffeef8 0%, #e8d5f2 25%, #d4e8ff 50%, #fff0e0 75%, #e8ffe0 100%);
+  font-family: "Gloria Hallelujah", "Caveat Brush", cursive;
+  padding: 24px 16px 48px;
+}
+
+h1 {
+  text-align: center;
+  color: #5c2d91;
+  margin: 0 0 4px;
+  font-family: "Caveat Brush", "Gloria Hallelujah", cursive;
+  font-size: 2.2rem;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+}
+
+.subtitle {
+  text-align: center;
+  color: #8b5cb8;
+  margin: 0 0 20px;
+  font-size: 1rem;
+}
+
+/* Sticker book page – paper look with slight shadow */
+.page {
+  position: relative;
+  max-width: 720px;
+  min-height: 520px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #fffef9 0%, #fff9f0 100%);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(92, 45, 145, 0.15), inset 0 1px 0 rgba(255,255,255,0.9);
+  padding: 32px 24px 48px;
+  border: 1px solid rgba(139, 92, 184, 0.2);
+}
+
+/* Base sticker – clickable, slight rotation and shadow */
+.sticker {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.12));
+}
+
+.sticker:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(4px 6px 8px rgba(92, 45, 145, 0.25));
+}
+
+.sticker img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Staggered positions and different sizes – Lisa Frank sticker sheet feel */
+.s1 { left: 8%;   top: 6%;   width: 100px; transform: rotate(-6deg); }
+.s2 { left: 42%;  top: 2%;   width: 88px;  transform: rotate(4deg);  }
+.s3 { right: 10%;  top: 10%;  width: 72px;  transform: rotate(-3deg); }
+.s4 { left: 4%;   top: 38%;  width: 78px;  transform: rotate(8deg);  }
+.s5 { left: 38%;  top: 32%;  width: 120px; transform: rotate(-4deg); }
+.s6 { right: 6%;  top: 36%;  width: 92px;  transform: rotate(5deg);  }
+.s7 { left: 12%;  bottom: 12%; width: 86px;  transform: rotate(3deg);  }
+.s8 { left: 44%;  bottom: 8%;  width: 70px;  transform: rotate(-7deg); }
+.s9 { right: 8%;  bottom: 14%; width: 96px;  transform: rotate(6deg);  }
+
+/* Message popup */
+.message-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(92, 45, 145, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 100;
+}
+
+.message-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.message-bubble {
+  position: relative;
+  display: inline-block;
+  max-width: 280px;
+  padding: 20px 48px 20px 24px;
+  background: linear-gradient(135deg, #fff 0%, #f8f0ff 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(92, 45, 145, 0.3);
+  border: 2px solid rgba(139, 92, 184, 0.4);
+}
+
+.message-popup .message-text {
+  display: block;
+  font-size: 1.25rem;
+  color: #5c2d91;
+}
+
+.message-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #8b5cb8;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.message-close:hover {
+  background: rgba(139, 92, 184, 0.15);
+  color: #5c2d91;
+}
+
+@media (max-width: 600px) {
+  .page { padding: 24px 16px 40px; min-height: 480px; }
+  .s1 { width: 72px;  left: 6%;   top: 4%;   }
+  .s2 { width: 64px;  left: 38%;  top: 2%;   }
+  .s3 { width: 56px;  right: 8%;  top: 8%;   }
+  .s4 { width: 58px;  left: 2%;   top: 34%;  }
+  .s5 { width: 88px;  left: 32%;  top: 28%;  }
+  .s6 { width: 68px;  right: 4%;  top: 32%;  }
+  .s7 { width: 62px;  left: 8%;   bottom: 10%; }
+  .s8 { width: 52px;  left: 40%;  bottom: 6%;  }
+  .s9 { width: 70px;  right: 6%;  bottom: 10%; }
+}

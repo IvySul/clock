@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticker Book – click the stickers!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>My Sticker Book</h1>
+  <p class="subtitle">Click the stickers — some have a surprise!</p>
+
+  <div class="page">
+    <div class="sticker s1" data-message="You're awesome! ✨">
+      <img src="images/1.jpg" alt="Sticker 1" onerror="this.src='images/1.png'">
+    </div>
+    <div class="sticker s2" data-message="">
+      <img src="images/2.jpg" alt="Sticker 2" onerror="this.src='images/2.png'">
+    </div>
+    <div class="sticker s3" data-message="Stay magical! 🌈">
+      <img src="images/3.jpg" alt="Sticker 3" onerror="this.src='images/3.png'">
+    </div>
+    <div class="sticker s4" data-message="">
+      <img src="images/4.jpg" alt="Sticker 4" onerror="this.src='images/4.png'">
+    </div>
+    <div class="sticker s5" data-message="Have a sparkly day! ⭐">
+      <img src="images/5.jpg" alt="Sticker 5" onerror="this.src='images/5.png'">
+    </div>
+    <div class="sticker s6" data-message="">
+      <img src="images/6.jpg" alt="Sticker 6" onerror="this.src='images/6.png'">
+    </div>
+    <div class="sticker s7" data-message="You're a star! 🌟">
+      <img src="images/7.jpg" alt="Sticker 7" onerror="this.src='images/7.png'">
+    </div>
+    <div class="sticker s8" data-message="">
+      <img src="images/8.jpg" alt="Sticker 8" onerror="this.src='images/8.png'">
+    </div>
+    <div class="sticker s9" data-message="Dream in color! 💜">
+      <img src="images/9.jpg" alt="Sticker 9" onerror="this.src='images/9.png'">
+    </div>
+  </div>
+
+  <div class="message-popup" id="messagePopup" aria-hidden="true">
+    <div class="message-bubble">
+      <span class="message-text" id="messageText"></span>
+      <button class="message-close" id="messageClose" type="button" aria-label="Close">×</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var popup = document.getElementById('messagePopup');
+      var textEl = document.getElementById('messageText');
+      var closeBtn = document.getElementById('messageClose');
+
+      document.querySelectorAll('.sticker').forEach(function(sticker) {
+        sticker.addEventListener('click', function() {
+          var msg = this.getAttribute('data-message');
+          if (msg) {
+            textEl.textContent = msg;
+            popup.classList.add('is-open');
+            popup.setAttribute('aria-hidden', 'false');
+          }
+        });
+      });
+
+      function closePopup() {
+        popup.classList.remove('is-open');
+        popup.setAttribute('aria-hidden', 'true');
+      }
+
+      closeBtn.addEventListener('click', closePopup);
+      popup.addEventListener('click', function(e) {
+        if (e.target === popup) closePopup();
+      });
+    })();
+  </script>
+</body>
+</html>
